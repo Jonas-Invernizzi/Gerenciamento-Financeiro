@@ -7,10 +7,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href=" @vite('resources/css/login.css')">
 </head>
 <body>
 <main class="login">
+    {@if ($errors->any())}
+        <div class="alert alert-danger">
+            <ul>
+                {@foreach ($errors->all() as $error)}
+                    <li>{{ $error }}</li>
+                {@endforeach}
+            </ul>
+        </div>
+    {
+
+    @endif}
 
         <section class="brand">
         <span class="brand__ring brand__ring--top" aria-hidden="true"></span>
@@ -48,7 +59,8 @@
             <h2 class="form-box__title">Entre na sua conta</h2>
             <p class="form-box__subtitle">Continue construindo uma vida financeira mais leve.</p>
 
-            <form action="#" class="form" novalidate>
+            <form action="{{ route('usuario.login') }}" method="POST" class="form">
+                @csrf
                 <div class="field">
                     <label for="email" class="field__label">E-mail</label>
                     <div class="input">

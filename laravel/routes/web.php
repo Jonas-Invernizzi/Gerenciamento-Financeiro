@@ -1,4 +1,4 @@
-om<?php
+<?php
 
 
 use App\Http\Controllers\UsuarioController;
@@ -16,10 +16,10 @@ Route::middleware('guest')->group(function () {
     Route::post('/register', [UsuarioController::class, 'register'])->name('usuario.register');
 });
 
-// Route::fallback(function () {
-//     if (Auth::check()) {
-//         return redirect()->route('.index');
-//     } else {
-//         return redirect()->route('login');
-//     }
-// });
+Route::fallback(function () {
+    if (Auth::check()) {
+        return redirect()->route('.index');
+    } else {
+        return redirect()->route('login');
+    }
+});
