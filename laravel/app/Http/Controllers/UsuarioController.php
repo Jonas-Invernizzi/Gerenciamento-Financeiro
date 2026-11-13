@@ -53,7 +53,6 @@ class UsuarioController extends Controller
         ]);
 
         Auth::login($usuario);
-        return redirect()->route('filme.index');
     }
     public function logout(Request $request)
     {
