@@ -31,7 +31,7 @@ class UsuarioController extends Controller
 
         if(Auth::attempt($credenciais)){
             $request->session()->regenerate();
-            return redirect()->intended(route('perfil'));
+            return redirect()->intended(route('visao-geral'));
         }
 
         return back()->withErrors([

@@ -2,9 +2,9 @@
     $usuario = auth()->user();
     $hoje = \Illuminate\Support\Str::ucfirst(now('America/Sao_Paulo')->locale('pt_BR')->translatedFormat('l, j \d\e F'));
     $menu = [
-        ['rota' => null, 'nome' => 'Visão geral', 'curto' => 'Início', 'icone' => 'inicio'],
-        ['rota' => null, 'nome' => 'Movimentações', 'curto' => 'Movimentos', 'icone' => 'movimentos'],
-        ['rota' => null, 'nome' => 'Planejamento', 'curto' => 'Planejar', 'icone' => 'planejar'],
+        ['rota' => 'visao-geral', 'nome' => 'Visão geral', 'curto' => 'Início', 'icone' => 'inicio'],
+        ['rota' => 'movimentacoes', 'nome' => 'Movimentações', 'curto' => 'Movimentos', 'icone' => 'movimentos'],
+        ['rota' => 'planejamento', 'nome' => 'Planejamento', 'curto' => 'Planejar', 'icone' => 'planejar'],
         ['rota' => 'perfil', 'nome' => 'Meu perfil', 'curto' => 'Perfil', 'icone' => 'perfil'],
     ];
 @endphp
@@ -29,8 +29,8 @@
 
         <nav class="sidebar__nav" aria-label="Menu">
             @foreach ($menu as $item)
-                <a href="{{ $item['rota'] ? route($item['rota']) : '#' }}" @class(['ativo' => $item['rota'] && request()->routeIs($item['rota'])])
-                    @if ($item['rota'] && request()->routeIs($item['rota'])) aria-current="page" @endif>
+                <a href="{{ $item['rota'] ? route($item['rota']) : '#' }}" @class(['ativo' => $item['rota'] && request()->routeIs($item['rota'], $item['rota'] . '.*')])
+                    @if ($item['rota'] && request()->routeIs($item['rota'], $item['rota'] . '.*')) aria-current="page" @endif>
                     @include('layouts.icone', ['nome' => $item['icone']])
                     {{ $item['nome'] }}
                 </a>
@@ -97,7 +97,7 @@
 
     <nav class="bottom-nav" aria-label="Menu">
         @foreach ($menu as $item)
-            <a href="{{ $item['rota'] ? route($item['rota']) : '#' }}" @class(['ativo' => $item['rota'] && request()->routeIs($item['rota'])])>
+            <a href="{{ $item['rota'] ? route($item['rota']) : '#' }}" @class(['ativo' => $item['rota'] && request()->routeIs($item['rota'], $item['rota'] . '.*')])>
                 @include('layouts.icone', ['nome' => $item['icone']])
                 <span>{{ $item['curto'] }}</span>
             </a>

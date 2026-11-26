@@ -11,7 +11,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // quem já está logado e abre o login ou o cadastro vai para a visão geral
+        $middleware->redirectUsersTo('/visao-geral');
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

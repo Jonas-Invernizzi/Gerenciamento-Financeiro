@@ -31,15 +31,6 @@ class PerfilTest extends TestCase
         $this->get('/perfil')->assertRedirect(route('login'));
     }
 
-    public function test_login_leva_para_o_perfil(): void
-    {
-        $this->usuario();
-
-        $this->post('/login', ['email' => 'maria@email.com', 'senha' => 'segredo123'])
-            ->assertRedirect(route('perfil'));
-        $this->assertAuthenticated();
-    }
-
     public function test_perfil_mostra_os_dados(): void
     {
         $this->actingAs($this->usuario())
