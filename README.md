@@ -1,10 +1,14 @@
 # Gerenciamento Financeiro
 
-Inicio do projeto 
-- Criação do Banco de dados Jonas Invernizzi
-- Criação da página de Login Theo Michielin
-- Atualização do Trello por Lucas Sangali
+Backend e Frontend:
+- Derick Sonda
+- Artur Muller
+- Theo Michielin
 
-Desenvolvimento Telas Principais
-- Backend: Artur Muller
-- Frontend: Theo Michielin 
+Testadores:
+- Alessandra Windy
+- Jonas Invernizzi
+
+Analistas:
+- Pedro Testa Gabardo (Documentação)
+- Lucas Bortolotto Sangali (Git Hub) 
